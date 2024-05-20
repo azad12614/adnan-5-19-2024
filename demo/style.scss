@@ -1,7 +1,7 @@
 $font: "Lato 400", sans-serif;
-$background: #ffffff;
-$primary-color: rgb(4, 4, 10);
-$secondary-color: #0a0068;
+$text: #ffffff;
+$primary-color: rgb(0, 0, 66);
+$secondary-color: #09080e;
 $overlay: #00ffff;
 
 * {
@@ -16,7 +16,7 @@ body {
     background-image: url("../images/06_6.png");
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: $background;
+    background-color: $text;
     align-items: center;
     overflow: hidden;
     justify-content: center;
@@ -36,8 +36,17 @@ body {
     gap: 2rem;
     align-items: center;
 
+    &-items {
+        width: 90vw;
+        overflow: hidden;
+        display: flex;
+        position: relative;
+        gap: 2rem;
+        align-items: center;
+    }
+
     &-item {
-        width: 150px;
+        width: 140px;
         cursor: pointer;
         transition: 0.4s;
         position: relative;
@@ -55,19 +64,23 @@ body {
         display: block;
         font-weight: 400;
         font-size: 20px;
-        color: $background;
+        color: $text;
         opacity: 0.6;
         transition-duration: 0.3s;
         user-select: none;
     }
+}
 
-    &-item:first-child {
-        margin-left: 2rem;
-    }
+.arrow-left {
+    margin-left: 26vw;
+    color: $text;
+    cursor: pointer;
+}
 
-    &-item:last-child {
-        margin-right: 2rem;
-    }
+.arrow-right {
+    margin-right: 26vw;
+    color: $text;
+    cursor: pointer;
 }
 
 .overview {
@@ -84,6 +97,14 @@ body {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
+}
+
+.closed {
+    width: 0px;
+    /* Hide the sidenav when closed */
+    transition: all 0.3s ease;
+    /* Smooth transition for closing */
+    visibility: collapse;
 }
 
 .overview-description {
@@ -126,7 +147,7 @@ body {
     position: relative;
     flex-shrink: 0;
     justify-content: start;
-    background-color: $background;
+    background-color: $text;
 }
 
 .overview-pic-img img,
@@ -163,4 +184,29 @@ body {
     font-size: 1rem;
     font-weight: bold;
     font-style: oblique;
+}
+
+#overview-menu {
+    position: fixed;
+    right: 0;
+    top: 2;
+
+    width: 4rem;
+    height: 3rem;
+    margin-top: 1rem;
+    padding-top: 0.4rem;
+
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 1rem 0rem 0rem 1rem;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+
+    z-index: 3;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: $text;
+    margin: 6px auto;
 }

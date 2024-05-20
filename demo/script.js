@@ -27,9 +27,9 @@ $(document).ready(function () {
     function smoothScroll(element, delta) {
         const container = document.getElementById(element);
         if (delta > 0) {
-            container.scrollLeft += 60; // Adjust scroll amount as needed
+            container.scrollLeft += 100; // Adjust scroll amount as needed
         } else {
-            container.scrollLeft -= 60; // Adjust scroll amount as needed
+            container.scrollLeft -= 100; // Adjust scroll amount as needed
         }
 
     }
@@ -54,4 +54,28 @@ $(document).ready(function () {
             smoothScroll(elementId, event.deltaY); // Call smoothScroll function with deltaY from wheel event
         });
     });
+
+    const navContainer = document.getElementById("nav_container");
+    const leftArrow = document.querySelector(".arrow-left");
+    const rightArrow = document.querySelector(".arrow-right");
+
+    const scrollAmount = 100; // Adjust this value to control scroll distance per click
+
+    leftArrow.addEventListener("click", function () {
+        navContainer.scrollLeft -= scrollAmount;
+    });
+
+    rightArrow.addEventListener("click", function () {
+        navContainer.scrollLeft += scrollAmount;
+    });
+
+
+    const sidenav = document.getElementById("sidenav");
+    const toggleButton = document.getElementById("overview-menu");
+
+    // Event listener for clicking the toggle button
+    toggleButton.addEventListener("click", function () {
+        sidenav.classList.toggle("closed"); // Toggle "closed" class on the sidenav
+    });
+
 });
