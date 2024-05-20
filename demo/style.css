@@ -91,9 +91,7 @@ body {
 
 .closed {
   width: 0px;
-  /* Hide the sidenav when closed */
   transition: all 0.3s ease;
-  /* Smooth transition for closing */
   visibility: collapse;
 }
 

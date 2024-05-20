@@ -64,7 +64,6 @@ $(document).ready(function () {
     leftArrow.addEventListener("click", function () {
         navContainer.scrollLeft -= scrollAmount;
     });
-
     rightArrow.addEventListener("click", function () {
         navContainer.scrollLeft += scrollAmount;
     });
@@ -77,5 +76,4 @@ $(document).ready(function () {
     toggleButton.addEventListener("click", function () {
         sidenav.classList.toggle("closed"); // Toggle "closed" class on the sidenav
     });
-
 });
