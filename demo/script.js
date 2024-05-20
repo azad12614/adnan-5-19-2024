@@ -23,66 +23,35 @@ $(document).ready(function () {
         $(this).addClass("active");
     });
 
-
-    // **Smooth Scrolling for #nav_container**
-
-    $("#nav_container").mouseenter(function () {
-        window.addEventListener("wheel", scrollNavigation_nav_container);
-    });
-
-    $("#nav_container").mouseleave(function () {
-        window.removeEventListener("wheel", scrollNavigation_nav_container);
-    });
-
-    function scrollNavigation_nav_container(event) {
-        const navContainer = $("#nav_container")[0];
-
-        if (event.deltaY > 0) {
-            navContainer.scrollLeft += 50; // Adjust scroll amount as needed
+    // Define a function for smooth scrolling
+    function smoothScroll(element, delta) {
+        const container = document.getElementById(element);
+        if (delta > 0) {
+            container.scrollLeft += 60; // Adjust scroll amount as needed
         } else {
-            navContainer.scrollLeft -= 50; // Adjust scroll amount as needed
+            container.scrollLeft -= 60; // Adjust scroll amount as needed
         }
+
     }
 
+    // Event listener for touch events (mobile) and wheel events (desktop)
+    const elements = ['nav_container', 'pic_img', 'pic-img-2']; // Array of element IDs
 
-    // **Smooth Scrolling for #pic_img**
+    elements.forEach(elementId => {
+        const element = document.getElementById(elementId);
+        element.addEventListener('touchstart', (event) => {
+            event.preventDefault(); // Prevent default touch behavior
+            const touchStartX = event.touches[0].clientX; // Get initial touch position
+            element.addEventListener('touchmove', (event) => {
+                event.preventDefault();
+                const touchMoveX = event.touches[0].clientX;
+                const delta = touchStartX - touchMoveX; // Calculate delta based on touch movement
+                smoothScroll(elementId, delta); // Call smoothScroll function with delta
+            });
+        });
 
-    $("#pic_img").mouseenter(function () {
-        window.addEventListener("wheel", scrollNavigation_pic_img);
+        element.addEventListener('wheel', (event) => {
+            smoothScroll(elementId, event.deltaY); // Call smoothScroll function with deltaY from wheel event
+        });
     });
-
-    $("#pic_img").mouseleave(function () {
-        window.removeEventListener("wheel", scrollNavigation_pic_img);
-    });
-
-    function scrollNavigation_pic_img(event) {
-        const picImg = $("#pic_img")[0];
-
-        if (event.deltaY > 0) {
-            picImg.scrollLeft += 50; // Adjust scroll amount as needed
-        } else {
-            picImg.scrollLeft -= 50; // Adjust scroll amount as needed
-        }
-    }
-
-
-    // **Smooth Scrolling for #pic-img-2**
-
-    $("#pic-img-2").mouseenter(function () {
-        window.addEventListener("wheel", scrollNavigation_pic_img_2);
-    });
-
-    $("#pic-img-2").mouseleave(function () {
-        window.removeEventListener("wheel", scrollNavigation_pic_img_2);
-    });
-
-    function scrollNavigation_pic_img_2(event) {
-        const picImg2 = $("#pic-img-2")[0];
-
-        if (event.deltaY > 0) {
-            picImg2.scrollLeft += 50; // Adjust scroll amount as needed
-        } else {
-            picImg2.scrollLeft -= 50; // Adjust scroll amount as needed
-        }
-    }
 });

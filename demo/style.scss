@@ -24,7 +24,7 @@ body {
 
 .navigation-tab {
     height: 70px;
-    width: 100%;
+    width: 100vw;
     background: rgba(0, 0, 0, 0.5);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -33,16 +33,11 @@ body {
     overflow: hidden;
     display: flex;
     position: relative;
-    flex-shrink: 0;
-    justify-content: center;
+    gap: 2rem;
+    align-items: center;
 
     &-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         width: 150px;
-        flex-shrink: 0;
         cursor: pointer;
         transition: 0.4s;
         position: relative;
@@ -50,8 +45,8 @@ body {
 
         &.active {
             .navigation-tab__txt {
-                opacity: 1;
-                transform: translate(0, 3px);
+                opacity: 1.2;
+                text-decoration: underline;
             }
         }
     }
@@ -61,11 +56,17 @@ body {
         font-weight: 400;
         font-size: 20px;
         color: $background;
-        opacity: 0.4;
+        opacity: 0.6;
         transition-duration: 0.3s;
-        // transition-delay: 0.1s;
-        transform: translate(0, 20px);
         user-select: none;
+    }
+
+    &-item:first-child {
+        margin-left: 2rem;
+    }
+
+    &-item:last-child {
+        margin-right: 2rem;
     }
 }
 
